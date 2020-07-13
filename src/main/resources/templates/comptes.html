@@ -73,23 +73,65 @@
                     <div class="card-deck mb-3 text-center">
                         <div class="card mb-4 shadow-sm">
                             <div class="card-header bg-primary">
-                                <h4 class="my-0 font-weight-normal text-light" th:text="'Opération sur comptes '">Free</h4>
+                                <h4 class="my-0 font-weight-normal text-light" th:text="'Opération sur comptes '"></h4>
                             </div>
                             <div class="card-body">
-
+                                <form th:action="@{/enregistrerOperation}" method="post">
+                                    <div>
+                                        <label th:text="'Compte :'"></label>
+                                        <input type="hidden" name="codeCompte" th:value="${codeCompte}"/>
+                                        <label th:text="${codeCompte}"></label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="typeOperation" value="VERS" checked="checked"
+                                               onchange="document.getElementById('forVirement').style.display='none'"/>
+                                        <label th:text="'Versement'"></label>
+                                        <input type="radio" name="typeOperation" value="'RET'"
+                                               onchange="document.getElementById('forVirement').style.display='none'"/>
+                                       <label th:text="'Retrait'"></label>
+                                        <input type="radio" name="typeOperation" value="'VIR'"
+                                        onchange="document.getElementById('forVirement').style.display='block'" />
+                                        <label th:text="'Virement'"></label>
+                                    </div>
+                                    <div id="forVirement" style="display:none">
+                                        <label th:text="'Vers le Compte: '"></label>
+                                        <input type="text" name="codeCompte2"/>
+                                    </div>
+                                    <div>
+                                        <label th:text="'Montant: '"></label>
+                                        <input type="text" name="montant" />
+                                    </div>
+                                    <span class="text-danger" th:text="${#httpServletRequest.getParameter('error')}"></span><br/>
+                                    <button type="submit" class="btn  btn-primary btn-lg" th:text="'OK'"></button>
+                                </form>
                             </div>
                         </div>
                         <div class="card mb-4 shadow-sm">
                             <div class="card-header bg-primary">
                                 <h4 class="my-0 font-weight-normal text-light"  th:text="'Listes des opérations '">Pro</h4>
                             </div>
-                            <div class="card-body" text-primary>
-                                <ul class="list-unstyled mt-3 mb-4">
-                                    <li>20 users included</li>
-                                    <li>10 GB of storage</li>
-                                    <li>Priority email support</li>
-                                    <li>Help center access</li>
-                                </ul>
+                            <div class="card-body" text-primary th:if="${compte}">
+                                <table class="table table-striped">
+                                    <tr class="table-active">
+                                        <th th:text="'Num2Cpte'"></th><th th:text="'Type2Cpte'"></th><th th:text="'Date OP'"></th><th th:text="'Montant'"></th>
+                                    </tr>
+                                    <tr  th:each="operation:${listeOperations}">
+                                        <td   th:text="${operation.numero}"></td>
+                                        <td  class="text-bold text-primary" th:text="${operation.class.simpleName}"></td>
+                                        <td th:text="${operation.dateOperation}"></td>
+                                        <td th:text="${operation.montant}"></td>
+                                    </tr>
+                                </table>
+                                <div class="container text-center">
+                                    <nav aria-label="..." class="text-center">
+                                        <ul class="pagination pagination-lg">
+                                            <li class="page-item" aria-current="page" th:each="p, status:${pages}">
+                                                <a class="page-link" th:href="@{/consulterCompte(codeCompte=${codeCompte}, page=${status.index})}" th:text="${status.index+1}"></a>
+
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
 

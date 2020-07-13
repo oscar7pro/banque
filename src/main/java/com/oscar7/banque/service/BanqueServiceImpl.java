@@ -1,4 +1,4 @@
-package com.oscar7.banque.metier;
+package com.oscar7.banque.service;
 
 import com.oscar7.banque.dao.CompteRepository;
 import com.oscar7.banque.dao.OperationRepository;
@@ -11,13 +11,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.Date;
 
 @Service
 @Transactional
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class BanqueMetierImpl implements IBanqueMetier {
+public class BanqueServiceImpl implements IBanqueService {
     @Autowired
     CompteRepository compteRepository;
 
