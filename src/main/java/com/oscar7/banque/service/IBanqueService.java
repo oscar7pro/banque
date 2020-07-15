@@ -3,8 +3,9 @@ package com.oscar7.banque.service;
 import com.oscar7.banque.entities.Compte;
 import com.oscar7.banque.entities.Operation;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public interface IBanqueService {
     public Compte consulterCompte(String codeCompte);
     public void verser(String codeCompte, double montant);
