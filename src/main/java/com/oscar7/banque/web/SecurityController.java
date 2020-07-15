@@ -1,0 +1,23 @@
+package com.oscar7.banque.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class SecurityController {
+
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @RequestMapping(value = "/")
+    public String homepage() {
+        return "redirect:operations";
+    }
+
+    @RequestMapping(value = "/403")
+    public String accessDeniedPage() {
+        return "403";
+    }
+}

@@ -25,13 +25,6 @@ public class BanqueServiceImpl implements IBanqueService {
 
     @Override
     public Compte consulterCompte(String codeCompte) {
-        //Compte compte = compteRepository.findOne(codeCompte); cette maniere de codée est révolue
-       /* Compte compte = compteRepository.findById(codeCompte).orElse(null);
-        if (compte == null) {
-            throw new RuntimeException("Compte introuvable");//Exception non surveillée
-        }*/
-        /*return compteRepository.findById(codeCompte)
-                .orElseThrow(() -> new EntityNotFoundException(codeCompte));*/
         return compteRepository.findById(codeCompte)
                 .orElseThrow(() -> new RuntimeException("Compte introuvable"));
     }
