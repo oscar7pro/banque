@@ -1,8 +1,9 @@
-package com.oscar7.banque.service;
+package com.oscar7.banque.service.impl;
 
 import com.oscar7.banque.dao.CompteRepository;
 import com.oscar7.banque.dao.OperationRepository;
 import com.oscar7.banque.entities.*;
+import com.oscar7.banque.service.IBanqueService;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;

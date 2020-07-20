@@ -1,0 +1,31 @@
+/*
+CREATE TABLE role (role VARCHAR(50) NOT NULL) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+INSERT INTO role (role) VALUES ('ADMIN'), ('USER');
+
+CREATE TABLE users (
+username VARCHAR(50) NOT NULL,
+password VARCHAR(500) NOT NULL,
+active TINYINT(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+INSERT INTO users (username,password,active) VALUES
+('admin', '81dc9bdb52d04dc20036dbd8313ed055',1),
+('user', '81dc9bdb52d04dc20036dbd8313ed055',1),
+('oscar', '81dc9bdb52d04dc20036dbd8313ed055',1);
+
+CREATE TABLE users_role (
+username VARCHAR(50) NOT NULL,
+role VARCHAR(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+ INSERT INTO users_role (username, role) VALUES
+ ('admin','ADMIN'),
+ ('admin','USER'),
+ ('user','USER'),
+ ('oscar','USER');
+
+ ALTER TABLE role ADD PRIMARY KEY (role);
+ ALTER TABLE users ADD PRIMARY KEY (username);
+ ALTER TABLE users_role ADD PRIMARY KEY (username,role);
+
+*/
