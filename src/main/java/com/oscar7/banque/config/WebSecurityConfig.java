@@ -21,8 +21,8 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    private static final String SELECT_USERNAME_PASSWORD_ENABLED_FROM_USERS_WHERE_USERNAME = "select username,password, enabled from users where username = ?";
-    private static final String QUERY = "select u.username, r.role from users u, roles r where u.username=? and u.id_user = r.id_user";
+    private static final String SELECT_USERNAME_PASSWORD_ENABLED_FROM_USERS_WHERE_USERNAME = "select username,password, enabled from b_users where username = ?";
+    private static final String QUERY = "select username, authority from authorities where username=?";
     @Autowired
     DataSource dataSource;
     private static final String ADMIN_ROLE = String.valueOf(RoleEnum.ADMIN);
@@ -46,8 +46,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-        auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(passwordEncoder());
+       /* auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(passwordEncoder());*/
 
         auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(passwordEncoder())
                 .usersByUsernameQuery(
