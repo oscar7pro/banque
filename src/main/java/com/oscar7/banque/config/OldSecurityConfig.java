@@ -1,3 +1,4 @@
+/*
 package com.oscar7.banque.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class OldSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     DataSource source;
 
@@ -25,19 +26,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+*/
 /*    @Override
     public void configure(final AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception{
-      *//*  authenticationManagerBuilder.inMemoryAuthentication().withUser("user").password(passwordEncoder().encode("{noop}password")).roles("USER");
+      *//*
+*/
+/*  authenticationManagerBuilder.inMemoryAuthentication().withUser("user").password(passwordEncoder().encode("{noop}password")).roles("USER");
         authenticationManagerBuilder.jdbcAuthentication().dataSource(dataSource).withDefaultSchema()
                 .withUser("user").password(passwordEncoder().encode("{noop}password")).roles("USER")
                 .and()
                 .withUser("admin").password(passwordEncoder().encode("{noop}password")).roles("USER", "ADMIN");*//*
+*/
+/*
 
         authenticationManagerBuilder.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery("select username as principal, password as cridentials, active from user where username=?")
                 .authoritiesByUsernameQuery("select username as principal, role as role from user_role where username=?")
                 .rolePrefix("ROLE_").passwordEncoder(passwordEncoder());
-    }*/
+    }*//*
+
 @Override
 protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     auth.jdbcAuthentication().dataSource(source).passwordEncoder(passwordEncoder());
@@ -72,6 +79,7 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
     }
 
+*/
 /*
     @Override
     protected void configure(final AuthenticationManagerBuilder authManagerBuilder) throws Exception {
@@ -86,10 +94,12 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
                 .and()
         .withUser("admin").password("{noop}1234").roles("ADMIN", "USER");
     }
-*/
+*//*
+
 
 
 
 
 
 }
+*/
