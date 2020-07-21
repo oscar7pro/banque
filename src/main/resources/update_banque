@@ -1,18 +1,15 @@
 /*
 
-CREATE TABLE role (role VARCHAR(50) NOT NULL) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-INSERT INTO role (role) VALUES ('ADMIN'), ('USER');
-
 CREATE TABLE users (
 username VARCHAR(50) NOT NULL,
 password VARCHAR(500) NOT NULL,
 active TINYINT(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO users (username,password,active) VALUES
-('admin', '81dc9bdb52d04dc20036dbd8313ed055',1),
-('user', '81dc9bdb52d04dc20036dbd8313ed055',1),
-('oscar', '81dc9bdb52d04dc20036dbd8313ed055',1);
+('admin', 'admin',1),
+('user', 'user',1),
+('oscar', 'oscar',1);
 
 CREATE TABLE users_role (
 username VARCHAR(50) NOT NULL,
@@ -52,4 +49,9 @@ INSERT INTO b_users (name, username, password, enabled)  values ('Oscar','user',
 INSERT INTO authorities (username, authority)
   values  ('admin','ADMIN'),
  ('user','USER');
+
+CREATE TABLE role (role VARCHAR(50) NOT NULL) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+INSERT INTO role (role) VALUES ('ADMIN'), ('USER');
+
 */
+

@@ -29,7 +29,7 @@
                             </div>
                         </div>
                         <div class="card mb-4 shadow-sm"  th:if="${compte}">
-                            <div class="card-header bg-primary"  >
+                            <div class="card-header bg-primary" >
                                 <h4 class="my-0 font-weight-normal text-light"  th:text="'Information sur le compte'"></h4>
                             </div>
                             <div class="card-body">
@@ -102,7 +102,7 @@
                                         <label th:text="'Montant: '"></label>
                                         <input type="text" name="montant" />
                                     </div>
-                                    <span class="text-danger" th:text="${#httpServletRequest.getParameter('error')}"></span><br/>
+                                    <!--<span class="text-danger" th:text="${#httpServletRequest.getParameter('error')}"></span><br/>-->
                                     <button type="submit" class="btn  btn-primary btn-lg" th:text="'OK'"></button>
                                 </form>
                             </div>
