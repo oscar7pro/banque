@@ -1,3 +1,4 @@
+/*
 package com.oscar7.banque.entities;
 
 import com.oscar7.banque.config.BCryptManagerUtil;
@@ -97,3 +98,4 @@ public class User implements UserDetails {
         }
     }
 }
+*/

@@ -1,31 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html  xmlns:="http://www.w3.org/1999/xhtml"
+       xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <meta charset="UTF-8"/>
     <title th:text="'Authentification'"></title>
     <!--<link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{../css/bootstrap.min.css}">-->
-<!--
-    <link rel="stylesheet" href="../static/myStyle.css" th:href="@{../static/myStyle.css}" />
--->
     <link rel="stylesheet"
-          href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css"/>
+          href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}"/>
 </head>
-<body >
+<body>
 <div class="justify-content-center h-100 container d-sm-flex" style="padding:100px;">
     <div class="d-flex justify-content-center h-100">
         <div class="card" style="border: 30px solid rgba(10,100,1000,100);">
             <div class="card-body">
+              <div class="text-danger" th:if="${param.error}" th:text="'Incorrect username or password'" ></div>
+                <div class="text-success" th:if="${param.logout}" th:text="'You have been logged out'"></div>
                 <form class="form-signin" th:href="@{/login}" method="post">
                     <h1 class="h3 mb-3 font-weight-normal text-center text-primary" th:text="'Veuillez vous connecter'"></h1>
                     <div class="form-group text-primary">
                         <label  th:text="'Votre login'"> </label>
-                        <input type="text" name="UserName" class="form-control" placeholder="UserName" />
+                        <input type="text" name="username" class="form-control" placeholder="username" th:required="required" th:autofocus="autofocus"  />
                     </div>
                     <div class="form-group text-primary">
                         <label  th:text="'Mot de passe'"> </label>
-                        <input type="password" name="password" class="form-control" placeholder="Password" />
+                        <input type="password" name="password" class="form-control" placeholder="password" th:required="required" th:autofocus="autofocus" />
                     </div>
                     <div class="checkbox mb-3  justify-content-center">
                         <label class="checkbox mb-3"  th:text="'Souviens-toi de moi'"></label>

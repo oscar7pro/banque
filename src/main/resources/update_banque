@@ -1,6 +1,4 @@
 /*
-CREATE TABLE role (role VARCHAR(50) NOT NULL) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-INSERT INTO role (role) VALUES ('ADMIN'), ('USER');
 
 CREATE TABLE users (
 username VARCHAR(50) NOT NULL,
@@ -9,16 +7,17 @@ active TINYINT(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 INSERT INTO users (username,password,active) VALUES
-('admin', '81dc9bdb52d04dc20036dbd8313ed055',1),
-('user', '81dc9bdb52d04dc20036dbd8313ed055',1),
-('oscar', '81dc9bdb52d04dc20036dbd8313ed055',1);
+('admin', 'admin',1),
+('user', 'user',1),
+('oscar', 'oscar',1);
 
-CREATE TABLE users_role (
+CREATE TABLE users_roles (
 username VARCHAR(50) NOT NULL,
 role VARCHAR(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
- INSERT INTO users_role (username, role) VALUES
+
+ INSERT INTO users_roles (username, role) VALUES
  ('admin','ADMIN'),
  ('admin','USER'),
  ('user','USER'),
@@ -28,4 +27,33 @@ role VARCHAR(50) NOT NULL
  ALTER TABLE users ADD PRIMARY KEY (username);
  ALTER TABLE users_role ADD PRIMARY KEY (username,role);
 
+
+
+	CREATE TABLE b_users (
+  name VARCHAR(50) NOT NULL,
+  username VARCHAR(50) NOT NULL,
+  password VARCHAR(100) NOT NULL,
+  enabled TINYINT NOT NULL DEFAULT 1,
+  PRIMARY KEY (username)
+);
+
+CREATE TABLE authorities (
+  username VARCHAR(50) NOT NULL,
+  authority VARCHAR(50) NOT NULL,
+  FOREIGN KEY (username) REFERENCES b_users(username)
+);
+
+CREATE UNIQUE INDEX ix_auth_username on authorities (username,authority);
+
+INSERT INTO b_users (name, username, password, enabled)  values ('Oscar','user', '1234',1),
+ ('administrator','admin', '1234',1);
+
+INSERT INTO authorities (username, authority)
+  values  ('admin','ADMIN'),
+ ('user','USER');
+
+CREATE TABLE role (role VARCHAR(50) NOT NULL) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+INSERT INTO roles (role) VALUES ('ADMIN'), ('USER');
+
 */
+

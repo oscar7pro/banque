@@ -27,7 +27,7 @@ public class BanqueController {
     @RequestMapping(value = "/consulterCompte", method = RequestMethod.GET)
     public String consulterCompte(final Model model, final String codeCompte,
                                   @RequestParam(name = "page", defaultValue = "0") final  int page,
-                                  @RequestParam(name = "size", defaultValue = "5") final int size){
+                                  @RequestParam(name = "size", defaultValue = "3") final int size){
         model.addAttribute("codeCompte", codeCompte);
         try{
             Compte compte = banqueMetier.consulterCompte(codeCompte);
