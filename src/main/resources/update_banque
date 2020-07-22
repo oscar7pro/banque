@@ -4,20 +4,22 @@ CREATE TABLE users (
 username VARCHAR(50) NOT NULL,
 password VARCHAR(500) NOT NULL,
 active TINYINT(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 INSERT INTO users (username,password,active) VALUES
 ('admin', 'admin',1),
 ('user', 'user',1),
 ('oscar', 'oscar',1);
 
-CREATE TABLE users_role (
+CREATE TABLE users_roles (
 username VARCHAR(50) NOT NULL,
 role VARCHAR(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
- INSERT INTO users_role (username, role) VALUES
+
+ INSERT INTO users_roles (username, role) VALUES
  ('admin','ADMIN'),
+ ('admin','USER'),
  ('user','USER'),
  ('oscar','USER');
 
@@ -51,7 +53,7 @@ INSERT INTO authorities (username, authority)
  ('user','USER');
 
 CREATE TABLE role (role VARCHAR(50) NOT NULL) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-INSERT INTO role (role) VALUES ('ADMIN'), ('USER');
+INSERT INTO roles (role) VALUES ('ADMIN'), ('USER');
 
 */
 

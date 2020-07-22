@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.w3.org/1999/xhtml"
-       xmlns:layout="http://www.w3.org/1999/xhtml/layout">
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       xmlns:sec="http://www.w3.org/1999/xhtml">
+
 <head>
     <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
@@ -27,6 +29,10 @@
             </div>
         </nav>
     </header>
+    <div>
+        <div sec:authentication="name"></div>
+        <div sec:authentication="principal.authorities"></div>
+    </div>
  <!--   <div class="container">-->
         <section layout:fragment="content"></section>
  <!--   </div>-->

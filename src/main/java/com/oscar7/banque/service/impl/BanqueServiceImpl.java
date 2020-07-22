@@ -27,7 +27,7 @@ public class BanqueServiceImpl implements IBanqueService {
     @Override
     public Compte consulterCompte(String codeCompte) {
         return compteRepository.findById(codeCompte)
-                .orElseThrow(() -> new RuntimeException("Compte introuvable"));
+                .orElseThrow(() -> new RuntimeException("Compte inexistant !!!"));
     }
 
     @Override
@@ -42,11 +42,11 @@ public class BanqueServiceImpl implements IBanqueService {
     @Override
     public void retirer(String codeCompte, double montant) {
         Compte compte = consulterCompte(codeCompte);
-        double facilitesCaisse = 0;
+        double faciliteCaisse = 0.0;
         if (compte instanceof CompteCourant) {
-            facilitesCaisse = ((CompteCourant) compte).getDecouvert();
+            faciliteCaisse = ((CompteCourant) compte).getDecouvert();
         }
-        if (compte.getSolde() < montant) {
+        if (compte.getSolde() + faciliteCaisse < montant) {
             throw new RuntimeException("Solde insufisant");
         }
         Retrait retrait = new Retrait(new Date(), montant, compte);
