@@ -51,7 +51,7 @@ public class BanqueServiceImpl implements IBanqueService {
         }
         Retrait retrait = new Retrait(new Date(), montant, compte);
         operationRepository.save(retrait);
-        compte.setSolde(compte.getSolde() - montant);
+        compte.setSolde(compte.getSolde()-montant);
         compteRepository.save(compte);
 
     }
